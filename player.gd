@@ -16,31 +16,34 @@ func _physics_process(delta: float) -> void:
 		swing_axe.emit(face_dir)
 		move_dir = "none"
 	
-	if swinging_timer.is_stopped():
-		# Get the input direction and handle the movement/deceleration.
-		if Input.is_action_just_pressed("down"):
+	
+	# Get the input direction and handle the movement/deceleration.
+	if Input.is_action_just_pressed("down"):
+		move_dir = "down"
+	if Input.is_action_just_pressed("up"):
+		move_dir = "up"
+	if Input.is_action_just_pressed("left"):
+		move_dir = "left"
+	if Input.is_action_just_pressed("right"):
+		move_dir = "right"
+	
+	if Input.is_action_just_released(move_dir) or timer_just_stopped:
+		if Input.is_action_pressed("down"):
 			move_dir = "down"
-		if Input.is_action_just_pressed("up"):
+		elif Input.is_action_pressed("up"):
 			move_dir = "up"
-		if Input.is_action_just_pressed("left"):
+		elif Input.is_action_pressed("left"):
 			move_dir = "left"
-		if Input.is_action_just_pressed("right"):
+		elif Input.is_action_pressed("right"):
 			move_dir = "right"
-		
-		if Input.is_action_just_released(move_dir) or timer_just_stopped:
-			if Input.is_action_pressed("down"):
-				move_dir = "down"
-			elif Input.is_action_pressed("up"):
-				move_dir = "up"
-			elif Input.is_action_pressed("left"):
-				move_dir = "left"
-			elif Input.is_action_pressed("right"):
-				move_dir = "right"
-			else:
-				move_dir = "none"
+		else:
+			move_dir = "none"
 			
 	if move_dir != "none":
 		face_dir = move_dir
+		
+	if !swinging_timer.is_stopped():
+		move_dir = "none"
 	
 	var direction: Vector2
 	match move_dir:

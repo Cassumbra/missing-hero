@@ -33,6 +33,7 @@ sprite_frames = SubResource("SpriteFrames_i3pqv")
 script = ExtResource("3_hqtel")
 
 [node name="AxeSwing" parent="AxeHandler" instance=ExtResource("3_i3pqv")]
+visible = false
 position = Vector2(0, 16)
 
 [node name="SwingingTimer" type="Timer" parent="AxeHandler"]
@@ -41,3 +42,4 @@ one_shot = true
 
 [connection signal="swing_axe" from="." to="AxeHandler" method="_on_player_swing_axe"]
 [connection signal="timeout" from="AxeHandler/SwingingTimer" to="." method="_on_swinging_timer_timeout"]
+[connection signal="timeout" from="AxeHandler/SwingingTimer" to="AxeHandler" method="_on_swinging_timer_timeout"]
