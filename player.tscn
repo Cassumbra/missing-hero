@@ -40,6 +40,16 @@ position = Vector2(0, 16)
 wait_time = 0.2
 one_shot = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RoomDetector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
+shape = SubResource("RectangleShape2D_onrkg")
+
 [connection signal="swing_axe" from="." to="AxeHandler" method="_on_player_swing_axe"]
 [connection signal="timeout" from="AxeHandler/SwingingTimer" to="." method="_on_swinging_timer_timeout"]
 [connection signal="timeout" from="AxeHandler/SwingingTimer" to="AxeHandler" method="_on_swinging_timer_timeout"]
+[connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]
+[connection signal="area_shape_entered" from="RoomDetector" to="." method="_on_room_detector_area_shape_entered"]

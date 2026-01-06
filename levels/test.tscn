@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn1sfbk7tpwhc"]
+
+[ext_resource type="PackedScene" uid="uid://be5dncu62dp1f" path="res://player.tscn" id="1_74xeq"]
+[ext_resource type="PackedScene" uid="uid://b5gk2br0rg0ag" path="res://levels/test/1.tscn" id="2_ny0t1"]
+[ext_resource type="PackedScene" uid="uid://d3p7rqem6h6ov" path="res://levels/test/room3.tscn" id="3_pnvjf"]
+[ext_resource type="PackedScene" uid="uid://chf4fuay0mh53" path="res://levels/test/2.tscn" id="3_r4e4k"]
+[ext_resource type="PackedScene" uid="uid://bqqwdrb467wu6" path="res://levels/test/room4.tscn" id="4_pnvjf"]
+
+[node name="Test" type="Node2D"]
+
+[node name="room1" parent="." instance=ExtResource("2_ny0t1")]
+
+[node name="room2" parent="." instance=ExtResource("3_r4e4k")]
+position = Vector2(160, 0)
+
+[node name="room3" parent="." instance=ExtResource("3_pnvjf")]
+position = Vector2(320, 0)
+
+[node name="room4" parent="." instance=ExtResource("4_pnvjf")]
+position = Vector2(0, -128)
+
+[node name="Player" parent="." instance=ExtResource("1_74xeq")]

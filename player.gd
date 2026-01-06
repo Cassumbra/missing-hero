@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var swinging_timer = $AxeHandler/SwingingTimer
+@onready var camera: Camera2D = $Camera2D
 
 signal swing_axe(direction: String)
 
@@ -80,3 +81,20 @@ func _physics_process(delta: float) -> void:
 
 func _on_swinging_timer_timeout() -> void:
 	timer_just_stopped = true
+
+
+func _on_room_detector_area_entered(area: Area2D) -> void:
+	pass
+
+
+func _on_room_detector_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	var room_size = area.shape_owner_get_shape(area.shape_find_owner(area_shape_index), area_shape_index).size
+	var room_position = area.global_position - room_size / 2.0
+	# TODO: A magic number most sinister... We should replace it with some global constant referring to the UI size, perhaps.
+	room_position.y = room_position.y + 8
+	print(room_size)
+	print(room_position)
+	camera.limit_top = room_position.y
+	camera.limit_left = room_position.x
+	camera.limit_bottom = room_position.y + room_size.y
+	camera.limit_right = room_position.x + room_size.x
