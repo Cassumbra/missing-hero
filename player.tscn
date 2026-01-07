@@ -48,8 +48,13 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
 shape = SubResource("RectangleShape2D_onrkg")
 
+[node name="RoomTransitionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="swing_axe" from="." to="AxeHandler" method="_on_player_swing_axe"]
 [connection signal="timeout" from="AxeHandler/SwingingTimer" to="." method="_on_swinging_timer_timeout"]
 [connection signal="timeout" from="AxeHandler/SwingingTimer" to="AxeHandler" method="_on_swinging_timer_timeout"]
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_room_detector_area_entered"]
 [connection signal="area_shape_entered" from="RoomDetector" to="." method="_on_room_detector_area_shape_entered"]
+[connection signal="timeout" from="RoomTransitionTimer" to="." method="_on_room_transition_timer_timeout"]
