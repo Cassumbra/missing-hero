@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://be5dncu62dp1f"]
+[gd_scene load_steps=9 format=3 uid="uid://be5dncu62dp1f"]
 
-[ext_resource type="Script" uid="uid://d0u1bi12hcgy8" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://d0u1bi12hcgy8" path="res://entities/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bfoiee0v13ijs" path="res://gfx/2026-01-01 hero axe 16x16 gbc.png" id="2_onrkg"]
-[ext_resource type="Script" uid="uid://ddb1b2lm680lt" path="res://axe_handler.gd" id="3_hqtel"]
-[ext_resource type="PackedScene" uid="uid://lb4mlj0v4dmr" path="res://axe_swing.tscn" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://ddb1b2lm680lt" path="res://components/axe_handler.gd" id="3_hqtel"]
+[ext_resource type="PackedScene" uid="uid://lb4mlj0v4dmr" path="res://components/axe_swing.tscn" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://ewl42ufpcjrp" path="res://entities/player_camera.gd" id="5_qsoyl"]
+[ext_resource type="Script" uid="uid://do6hwn4po5u1h" path="res://components/health.gd" id="6_6nm46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(15.5, 15.5)
@@ -40,7 +42,8 @@ position = Vector2(0, 16)
 wait_time = 0.2
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
+script = ExtResource("5_qsoyl")
 
 [node name="RoomDetector" type="Area2D" parent="."]
 visible = false
@@ -51,6 +54,9 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="RoomTransitionTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("6_6nm46")
 
 [connection signal="swing_axe" from="." to="AxeHandler" method="_on_player_swing_axe"]
 [connection signal="timeout" from="AxeHandler/SwingingTimer" to="." method="_on_swinging_timer_timeout"]
