@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw5psbsb7xn8o"]
+[gd_scene load_steps=7 format=3 uid="uid://dw5psbsb7xn8o"]
 
 [ext_resource type="Texture2D" uid="uid://dlc85sl0f5x6c" path="res://gfx/2026-01-01 pix.png" id="1_2paru"]
 [ext_resource type="Script" uid="uid://dkfwpo6a4yqgc" path="res://components/pix.gd" id="1_hbaqa"]
+[ext_resource type="Script" uid="uid://do6hwn4po5u1h" path="res://components/health.gd" id="3_8s1yj"]
+[ext_resource type="Script" uid="uid://cmkbp8fuq0kkh" path="res://components/hurtbox.gd" id="4_cu8t7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8s1yj"]
 size = Vector2(12, 10)
@@ -18,10 +20,9 @@ animations = [{
 }]
 
 [node name="Pix" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_hbaqa")
-speed = 14.0
-min_time = 0.1
-max_time = 0.5
+speed = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -31,5 +32,24 @@ shape = SubResource("RectangleShape2D_8s1yj")
 sprite_frames = SubResource("SpriteFrames_cu8t7")
 
 [node name="WanderTimer" type="Timer" parent="."]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_8s1yj")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health", "iframes")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_cu8t7")
+strength = 1
+health = NodePath("../Health")
+iframes = NodePath("../IFrames")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8s1yj")
+
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

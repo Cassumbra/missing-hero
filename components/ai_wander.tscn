@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu0g7wdwko73p"]
+
+[ext_resource type="Script" uid="uid://dmod8dc1rdm0k" path="res://components/ai_wander.gd" id="1_j3rdw"]
+
+[node name="AiWander" type="Node"]
+script = ExtResource("1_j3rdw")
+
+[node name="WanderTimer" type="Timer" parent="."]
