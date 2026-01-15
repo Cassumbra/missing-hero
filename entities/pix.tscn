@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw5psbsb7xn8o"]
+
+[ext_resource type="Texture2D" uid="uid://dlc85sl0f5x6c" path="res://gfx/2026-01-01 pix.png" id="1_2paru"]
+[ext_resource type="Script" uid="uid://dkfwpo6a4yqgc" path="res://components/pix.gd" id="1_hbaqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s1yj"]
+size = Vector2(12, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cu8t7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2paru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Pix" type="CharacterBody2D"]
+script = ExtResource("1_hbaqa")
+speed = 14.0
+min_time = 0.1
+max_time = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8s1yj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cu8t7")
+
+[node name="WanderTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
