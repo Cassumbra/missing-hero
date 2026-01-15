@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://be5dncu62dp1f"]
+[gd_scene load_steps=11 format=3 uid="uid://be5dncu62dp1f"]
 
 [ext_resource type="Script" uid="uid://d0u1bi12hcgy8" path="res://entities/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bfoiee0v13ijs" path="res://gfx/2026-01-01 hero axe 16x16 gbc.png" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://ddb1b2lm680lt" path="res://components/axe_handler.gd" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://lb4mlj0v4dmr" path="res://components/axe_swing.tscn" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://cyuojsdkcaets" path="res://components/sprite.gd" id="3_i623q"]
 [ext_resource type="Script" uid="uid://ewl42ufpcjrp" path="res://entities/player_camera.gd" id="5_qsoyl"]
 [ext_resource type="Script" uid="uid://do6hwn4po5u1h" path="res://components/health.gd" id="6_6nm46"]
 [ext_resource type="Script" uid="uid://cmkbp8fuq0kkh" path="res://components/hurtbox.gd" id="6_i623q"]
@@ -30,9 +31,11 @@ script = ExtResource("1_onrkg")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("iframes")]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
+script = ExtResource("3_i623q")
+iframes = NodePath("../IFrames")
 
 [node name="AxeHandler" type="Node2D" parent="."]
 script = ExtResource("3_hqtel")
