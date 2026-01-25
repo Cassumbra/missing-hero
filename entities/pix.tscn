@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw5psbsb7xn8o"]
+[gd_scene load_steps=8 format=3 uid="uid://dw5psbsb7xn8o"]
 
 [ext_resource type="Texture2D" uid="uid://dlc85sl0f5x6c" path="res://gfx/2026-01-01 pix.png" id="1_2paru"]
 [ext_resource type="Script" uid="uid://dkfwpo6a4yqgc" path="res://components/pix.gd" id="1_hbaqa"]
 [ext_resource type="Script" uid="uid://do6hwn4po5u1h" path="res://components/health.gd" id="3_8s1yj"]
+[ext_resource type="Script" uid="uid://cyuojsdkcaets" path="res://components/sprite.gd" id="3_cu8t7"]
 [ext_resource type="Script" uid="uid://cmkbp8fuq0kkh" path="res://components/hurtbox.gd" id="4_cu8t7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8s1yj"]
@@ -28,8 +29,10 @@ speed = 6.0
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_8s1yj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("iframes")]
 sprite_frames = SubResource("SpriteFrames_cu8t7")
+script = ExtResource("3_cu8t7")
+iframes = NodePath("../IFrames")
 
 [node name="WanderTimer" type="Timer" parent="."]
 

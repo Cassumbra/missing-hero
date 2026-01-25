@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @export var iframes: Timer
 
-@export var blink_time: int = 2
+@export var blink_time: int = 10
 
 func _ready() -> void:
 	iframes.connect("timeout", _on_iframes_timeout)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yq2fjx7xx5ac"]
+
+[ext_resource type="Script" uid="uid://d1fa10kq0328m" path="res://components/knockback_handler.gd" id="1_5bxg5"]
+
+[node name="KnockbackHandler" type="Node"]
+script = ExtResource("1_5bxg5")
+
+[node name="KnockbackTimer" type="Timer" parent="."]

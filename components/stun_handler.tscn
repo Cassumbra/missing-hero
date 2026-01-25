@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvna05lyamxo"]
+
+[ext_resource type="Script" uid="uid://drbq1skdiklnx" path="res://components/stun_handler.gd" id="1_l6m3d"]
+
+[node name="StunHandler" type="Node"]
+script = ExtResource("1_l6m3d")
+
+[node name="Timer" type="Timer" parent="."]

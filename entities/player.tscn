@@ -41,6 +41,7 @@ iframes = NodePath("../IFrames")
 script = ExtResource("3_hqtel")
 
 [node name="AxeSwing" parent="AxeHandler" instance=ExtResource("3_i3pqv")]
+process_mode = 4
 visible = false
 position = Vector2(0, 16)
 

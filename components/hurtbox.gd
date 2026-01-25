@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 			if (area as HurtBox).strength > strength and iframes.is_stopped():
 				health.value -= (area as HurtBox).damage
 				iframes.start()
-				print(health.value)
 	
 		
 #func _on_iframes_timeout() -> void:

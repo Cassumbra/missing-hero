@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 func _on_player_swing_axe(direction: String) -> void:
 	axe_swing.visible = true
+	axe_swing.process_mode = Node.PROCESS_MODE_INHERIT
 	swinging_timer.start()
 	
 	match direction:
@@ -29,3 +30,4 @@ func _on_player_swing_axe(direction: String) -> void:
 
 func _on_swinging_timer_timeout() -> void:
 	axe_swing.visible = false
+	axe_swing.process_mode = Node.PROCESS_MODE_DISABLED
